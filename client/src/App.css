@@ -1,0 +1,40 @@
+.Nav {
+  display: flex;
+  background-Color: #9B5F2B;
+  width: 100%;
+  height: 120px;
+  flex-direction: row;
+  border: 2px solid black;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.Navy {
+  background-Color: #D9A476;
+  width: 400px;
+  height: 50px;
+  box-Shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-Radius: 25px;
+  display: flex;
+}
+
+.Color{
+  color: transparent;
+  background: conic-gradient(
+  #F72F35 12%,
+  #30C5FF 12%,
+  #30C5FF 35%,
+  #FFD700 35%, #FFD700 55%,
+  #FF69B4 55%, #FF69B4 70%,
+  #D1E231 70%, #D1E231 90%,
+  #D09EE1 90%);
+  background-size: 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: xxx-large;
+  font-weight: 1000;
+}
+
+.search {
+  margin-top: 10px;
+}
