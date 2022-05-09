@@ -15,8 +15,10 @@ app.use(express.urlencoded({extended: true}))
 
 require('./config/mongoose.config')
 
-const allMyRoutes = require('./routes/user.routes')
-allMyRoutes(app)
+const userRoutes = require('./routes/user.routes')
+const eventRoutes = require('./routes/event.routes')
+userRoutes(app)
+eventRoutes(app)
 
 // const jwt = require('jsonwebtoken')
 // var token = jwt.sign({id: "dadsddsfd" }, process.env.SECRET_KEY)
