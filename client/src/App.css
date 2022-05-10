@@ -1,21 +1,24 @@
+body{
+  background-color: #e6cbb4;
+}
+
 .Nav {
   display: flex;
-  background-Color: #9B5F2B;
   width: 100%;
   height: 120px;
   flex-direction: row;
   justify-content: space-between;
   padding: 30px;
+  background-color: #27292a;
 }
 
 .Navy {
-  background-Color: #D9A476;
-  width: 400px;
+  background-Color: #e6cbb4;
+  width: 30rem;
   height: 50px;
   box-Shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-Radius: 25px;
   display: flex;
-
 }
 
 .Color{
@@ -51,6 +54,38 @@
 
 .inner:hover{
   opacity: 1.0;
-  background-color: #a57d59 ;
+  background-color: #e6cbb4 ;
   border-Radius: 25px;
+}
+
+
+.register {
+  /* background-color: #D9A476; */
+  width: 40%;
+  height: 45rem;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  text-align: center;
+  padding: 5%;
+  border-top: 1px solid #9c948f;
+}
+
+.singup {
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: conic-gradient(
+    #F72F35 12%,
+    #30C5FF 12%,
+    #30C5FF 35%,
+    #FFD700 35%, #FFD700 55%,
+    #FF69B4 55%, #FF69B4 70%,
+    #D1E231 70%, #D1E231 90%,
+    #D09EE1 90%);
+}
+
+
+.headcon {
+  margin: 5px;
 }

@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-console.log(process.env.SECRET_KEY, process.env.CLIENT_URL, process.env.PORT)
+// console.log(process.env.SECRET_KEY, process.env.CLIENT_URL, process.env.PORT)
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser())
@@ -17,8 +17,10 @@ require('./config/mongoose.config')
 
 const userRoutes = require('./routes/user.routes')
 const eventRoutes = require('./routes/event.routes')
+const postRoutes = require('./routes/post.routes')
 userRoutes(app)
 eventRoutes(app)
+postRoutes(app)
 
 // const jwt = require('jsonwebtoken')
 // var token = jwt.sign({id: "dadsddsfd" }, process.env.SECRET_KEY)

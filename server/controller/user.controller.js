@@ -19,6 +19,7 @@ const register = async (req, res) => {
   try {
     const newUserObj = await newUser.save();
     res.json(newUserObj)
+    return;
   } catch (error) {
     console.log("error in the mongoose save block")
     res.status(400).json(error)
