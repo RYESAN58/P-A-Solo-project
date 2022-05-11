@@ -10,6 +10,7 @@ body{
   justify-content: space-between;
   padding: 30px;
   background-color: #27292a;
+  border-bottom: #6D6027 2px solid;
 }
 
 .Navy {
@@ -62,7 +63,7 @@ body{
 .register {
   /* background-color: #D9A476; */
   width: 40%;
-  height: 45rem;
+  height: 50rem;
   margin: auto;
   margin-top: 10%;
   border-radius: 20px;

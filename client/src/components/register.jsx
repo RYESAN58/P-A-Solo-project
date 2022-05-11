@@ -12,6 +12,11 @@ const Register = (props) => {
   const [password, setPassword] = useState('')
   const[ confirmPassword, setConfirm]= useState('')
   const navigate = useNavigate()
+	const [errors, setErrors] = useState([]);
+  const [emailErr, setEmailErr] = useState('')
+  const[validator , setValidator] = useState('')
+
+  
   
   const handlePassword = (e) => {
     setPassword(e.target.value)
@@ -40,14 +45,37 @@ const Register = (props) => {
     })
       .then((res) => {
         console.log(res)
+        setErrors(false)
+        navigate('/')
       })
       .catch((err) => {
         console.log("ERROR===", err.response);
+        setValidator(err)
+				setErrors(err.response.data.errors)
+        console.log(err.response.data.code)
+        setValidator(err.response.data.code)
+        console.log(validator)
       })
   }
+
+
   return(
+    
     <div className="register">
       <h2 className="singup display-4">Register</h2>
+      {errors &&
+				Object.keys(errors).map((errKey, index) => {
+          return(
+            <div key= {index}>
+              <p style={{color: "red"}} key= {index}>{errors[errKey].message}</p>
+            </div>
+          )
+			})}
+      {
+          emailErr ? 
+          <p style={{color: 'red'}}>{emailErr}</p>:
+          ''
+          }
       <Form onSubmit={onSubmitHandler}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Firstname:</Form.Label>

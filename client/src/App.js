@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faHouse, faArrowCircleRight, faClipboard} from "@fortawesome/free-solid-svg-icons"
 import Register from './components/register';
 import { useState } from 'react';
+import Login from './components/login';
 
 
 
@@ -42,6 +43,7 @@ function App() {
         </nav>
         <Routes>
           <Route path='/register' element={<Register/>}/>
+          <Route path="/" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </div>

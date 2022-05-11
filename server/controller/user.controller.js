@@ -8,7 +8,7 @@ const register = async (req, res) => {
   try {
     const queriedUser = await User.findOne({email: body.email})
     if (queriedUser) {
-      res.status(400).json({ error: "Email already in use!"})
+      res.status(400).json({ error: "Email already in use"})
       return;
     }
   } catch (error) {
@@ -19,6 +19,7 @@ const register = async (req, res) => {
   try {
     const newUserObj = await newUser.save();
     res.json(newUserObj)
+    console.log(newUserObj)
     return;
   } catch (error) {
     console.log("error in the mongoose save block")
@@ -28,30 +29,30 @@ const register = async (req, res) => {
   }
   const result = await User.create(body)
   console.log("result", result)
-  res.json({msg: "You Got Here"})
+  res.json(result)
   return;
 };
 const login = async (req, res) => {
   const { body } = req; 
   if(!body.email) {
-    res.status(400).json({ error : "no email provided"})
+    res.status(400).json({ error : "No email provided"})
     return;
   }
   let useQuery; 
   try {
     useQuery = await User.findOne({email: body.email})
   } catch (error){
-    res.status(400).json({error: "email not found"})
+    res.status(400).json({error: "Email not found"})
     return;
   }
   console.log("query: ", useQuery)
   if (useQuery === null) {
-    res.status(400).json({err: "email not found"})
+    res.status(400).json({error: "Email not found"})
     return;
   }
   const passwordCheck = bcrypt.compareSync( body.password, useQuery.password);
   if (!passwordCheck) {
-    res.status(400).json({err:"email and/or password do not match"});
+    res.status(400).json({error:"Email and/or password do not match"});
     return;
   }
   const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY)
@@ -63,7 +64,12 @@ const login = async (req, res) => {
   })
   .json({msg: "succesful login" })
 }
+const logout = async (req, res) => {
+  res.clearCookie('userToken');
+  res.json({msg: "logout Successful"})
+};
 module.exports ={
   register,
-  login
+  login,
+  logout
 }
