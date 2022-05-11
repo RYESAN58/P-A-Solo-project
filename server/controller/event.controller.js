@@ -18,8 +18,20 @@ const addNewEvent = async (req, res) => {
     return;
   };
 };
+const getAll = (request, response) => {
+  Event.find({})
+    .then( allEvents => {
+      console.log(allEvents)
+      response.json(allEvents)
+    })
+    .catch((err)=> {
+      console.log(err)
+      response.json(err)
+    })
+  }
 
 
 module.exports = {
-  addNewEvent
+  addNewEvent,
+  getAll
 }

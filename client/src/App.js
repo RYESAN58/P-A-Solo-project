@@ -5,6 +5,7 @@ import {faHouse, faArrowCircleRight, faClipboard} from "@fortawesome/free-solid-
 import Register from './components/register';
 import { useState } from 'react';
 import Login from './components/login';
+import AddEvent from './components/addEvent';
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path='/register' element={<Register/>}/>
           <Route path="/" element={<Login/>}/>
+          <Route path='/all' element={<AddEvent/>}/>
         </Routes>
       </BrowserRouter>
     </div>
