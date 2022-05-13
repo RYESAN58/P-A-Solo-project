@@ -7,6 +7,7 @@ import Figure from 'react-bootstrap/Figure'
 import {Link, useNavigate} from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Cookies from "js-cookies"
+import Navy from "./nav";
 
 const AddEvent = () => {
   const navigate= useNavigate()
@@ -108,6 +109,7 @@ const AddEvent = () => {
 
   return (
     <div>
+      <Navy/>
       <div style={{display: "flex", justifyContent: "space-between", margin: "5px"}}>
         <h2>Welcome {name}</h2>
         <Button variant="danger" onClick={handleLogout}>Logout</Button>
@@ -123,7 +125,7 @@ const AddEvent = () => {
                 src={`./uploads/${event.image}`}
                 style={{height:"171px", width:"180px"}}
                 />
-                <Card.Body style={{textAlign: "center"}}>
+                <Card.Body >
                   <Card.Title>{event.title}</Card.Title>
                   <Card.Text>
                     {event.description}

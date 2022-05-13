@@ -115,3 +115,20 @@ body{
   text-align: "center";
   border: "#e6cbb4";
 }
+
+.feed {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid black;
+  margin-right: 5px,
+}
+
+.shadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.pointer{
+  cursor:pointer
+}

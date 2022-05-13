@@ -44,7 +44,14 @@ const allPost =(request, response) => {
   .catch(err => response.status(400).json(err))
 }
 
+const deletePost = (request, response) => {
+  Post.deleteOne({_id: request.params.id})
+    .then(deleteConfirmation => response.json(deleteConfirmation))
+    .catch(err => response.json(err))
+}
+
 module.exports = {
   addNewPost,
-  allPost
+  allPost,
+  deletePost
 }
