@@ -6,6 +6,7 @@ import Register from './components/register';
 import { useState } from 'react';
 import Login from './components/login';
 import AddEvent from './components/addEvent';
+import EventFeed from './components/event.feed';
 
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path="/" element={<Login/>}/>
           <Route path='/all' element={<AddEvent/>}/>
+          <Route path='/details/:id' element={<EventFeed/>}/>
         </Routes>
       </BrowserRouter>
     </div>

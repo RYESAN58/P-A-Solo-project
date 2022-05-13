@@ -1,5 +1,8 @@
 const PostCtrl = require("../controller/post.controller")
+const multer = require('../middleware/storage')
+
 
 module.exports = app => {
-  app.post('/api/post/:eventId', PostCtrl.addNewPost)
+  app.get('/api/allpost/:id', PostCtrl.allPost)
+  app.post('/api/poster/:eventId', multer.upload.single("image") ,PostCtrl.addNewPost)
 }

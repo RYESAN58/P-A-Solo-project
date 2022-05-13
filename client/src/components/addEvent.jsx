@@ -5,7 +5,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Figure from 'react-bootstrap/Figure'
 import {Link, useNavigate} from "react-router-dom"
-
+import Card from 'react-bootstrap/Card'
+import Cookies from "js-cookies"
 
 const AddEvent = () => {
   const navigate= useNavigate()
@@ -16,6 +17,9 @@ const AddEvent = () => {
   const [authError, setAuthError] = useState('')
   const [errors, setErrors] = useState({})
   const [display, setDisplay] = useState('none')
+  const[name , setName] = useState('')
+  const [idFromUser, setId] = useState('')
+  const [dummy, setDummy] = useState(false)
 
 	useEffect(() => {
 		axios
@@ -24,9 +28,11 @@ const AddEvent = () => {
         const result = response.data
 				console.log(response.data)
         setEvents(result)
+        setName(localStorage.getItem('name'))
+        setId(localStorage.getItem('id'))
 			})
 			.catch((err) => console.log(err.response));
-    }, []);
+    }, [dummy]);
 
     const formData = new FormData();
 
@@ -75,24 +81,72 @@ const AddEvent = () => {
     })
     }
 
+    const handleLogout = () => {
+      axios
+        .post("http://localhost:8000/api/logout",{
+        credentials: 'include'
+      })
+        .then((response) => {
+          localStorage.removeItem('name')
+          localStorage.removeItem('id')
+          document.cookie = "userToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+          navigate('/')
+        })
+        .catch((error)=> {
+          console.log(error)
+        })
+      }
+
+    const deleteEvent = (id) => {
+      axios.delete(`http://localhost:8000/api/delete/${id}`)
+      .then(res => {
+        console.log(res)
+        setDummy(!dummy)
+    })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div>
+      <div style={{display: "flex", justifyContent: "space-between", margin: "5px"}}>
+        <h2>Welcome {name}</h2>
+        <Button variant="danger" onClick={handleLogout}>Logout</Button>
+      </div>
       <div className="EVE">
         {events.map((event, index) => {
           return(
-            <Figure style={{textAlign: "center"}} key={index}>
-              <h3>{event.title}</h3>
-              <Figure.Image
+            <Card className="eventCard" key={index}>
+              <Card.Img
                 width={171}
                 height={180}
                 alt={`event number ${index}`}
                 src={`./uploads/${event.image}`}
-                style={{height:"171px", width:"180px", borderRadius:"50%" }}
+                style={{height:"171px", width:"180px"}}
                 />
-              <Figure.Caption>
-                {event.description}
-              </Figure.Caption>
-            </Figure>
+                <Card.Body style={{textAlign: "center"}}>
+                  <Card.Title>{event.title}</Card.Title>
+                  <Card.Text>
+                    {event.description}
+                  </Card.Text>
+                  {
+                    event.user_id._id === idFromUser ?
+                    <Button variant="danger" style={{margin: "5px"}} onClick={(e) => {
+                      let x = window.confirm('are you sure You Want to adopt?')
+                      if (x){
+                        deleteEvent(event._id)
+                      }
+                    }}>Delete</Button>:
+                    ""
+                  }
+                  <Button onClick={() => {
+                    navigate(`/details/${event._id}`)}}>
+                    Event
+                  </Button>
+                </Card.Body>
+                <Figure.Caption style={{textAlign: "center"}}>
+                  <p>Posted by {event.user_id.FirstName}</p>
+                </Figure.Caption>
+            </Card>
           )
         })}
       </div>

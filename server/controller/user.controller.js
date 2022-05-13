@@ -56,17 +56,18 @@ const login = async (req, res) => {
     return;
   }
   const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY)
-  console.log("token : " , userToken)
+  console.log("token : jhlihl " , userToken)
   res
     .cookie("userToken", userToken, process.env.SECRET_KEY, {
       httpOnly: true,
       expires: new Date(Date.now() + 900000000)
   })
-  .json({msg: "succesful login" })
+  .json(useQuery)
 }
 const logout = async (req, res) => {
-  res.clearCookie('userToken');
-  res.json({msg: "logout Successful"})
+  console.log('gets here')
+  res.clearCookie('userToken', ['/']);
+  res.json({msg: "logout Successful"}).end()
 };
 module.exports ={
   register,

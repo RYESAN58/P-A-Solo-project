@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 
 
 const addNewEvent = async (req, res) => {
-  console.log(req.file.originalname)
   let newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
@@ -46,9 +45,29 @@ const getAll = (request, response) => {
       response.json(err)
     })
   }
+const deleteEvent = (request, response) => {
+		Event.deleteOne({_id: request.params.id})
+			.then(deleteConfirmation => response.json(deleteConfirmation))
+			.catch(err => response.json(err))
+}
+
+const updateEvent = (request, response) => {
+  Event.findOneAndUpdate({_id: request.params.id}, request.body, {new: true})
+    .then(updatedPet => response.json(updatedPet))
+    .catch(err=> response.json(err))
+}
+
+const findOneEvent = (request, response )=> {
+  Event.findOne({_id:request.params.id}).populate("user_id")
+    .then(event => response.json(event))
+    .catch(event => response.status(400).json(err))
+}
 
 
 module.exports = {
   addNewEvent, 
-  getAll
+  getAll,
+  deleteEvent,
+  updateEvent,
+  findOneEvent
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -11,6 +11,7 @@ const Login = (props) => {
   const [err, setErr] = useState('');
   const [sucessMsg, setSuccessMsg] = useState('')
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit= (e) => {
     e.preventDefault();
@@ -21,7 +22,14 @@ const Login = (props) => {
       .post("http://localhost:8000/api/login", postData, {
         withCredentials: true,
       })
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response)
+        const result = response.data
+        console.log(result)
+        localStorage.setItem(`name`, `${result.FirstName}`)
+        localStorage.setItem(`id`, `${result._id}`)
+        navigate('/all')
+      })
       .catch((err) => {
 				console.log('ERROR!', err.response);
 				setErrors(err.response.data.error)
@@ -35,6 +43,7 @@ const Login = (props) => {
       .post("http://localhost:8000/api/logout")
       .then((response) => {
         setSuccessMsg(response.msg)
+        navigate('/')
       })
       .catch((error)=> {
         console.log(error)
