@@ -8,6 +8,7 @@ import {Link, useNavigate} from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Cookies from "js-cookies"
 import Navy from "./nav";
+import SubNav from "./subnav";
 
 const AddEvent = () => {
   const navigate= useNavigate()
@@ -81,23 +82,6 @@ const AddEvent = () => {
       }
     })
     }
-
-    const handleLogout = () => {
-      axios
-        .post("http://localhost:8000/api/logout",{
-        credentials: 'include'
-      })
-        .then((response) => {
-          localStorage.removeItem('name')
-          localStorage.removeItem('id')
-          document.cookie = "userToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-          navigate('/')
-        })
-        .catch((error)=> {
-          console.log(error)
-        })
-      }
-
     const deleteEvent = (id) => {
       axios.delete(`http://localhost:8000/api/delete/${id}`)
       .then(res => {
@@ -110,9 +94,9 @@ const AddEvent = () => {
   return (
     <div>
       <Navy/>
+      <SubNav/>
       <div style={{display: "flex", justifyContent: "space-between", margin: "5px"}}>
         <h2>Welcome {name}</h2>
-        <Button variant="danger" onClick={handleLogout}>Logout</Button>
       </div>
       <div className="EVE">
         {events.map((event, index) => {
@@ -139,6 +123,15 @@ const AddEvent = () => {
                       }
                     }}>Delete</Button>:
                     ""
+                  }
+                  {
+                    event.user_id._id === idFromUser ?
+                    <Button variant="default" onClick={()=> {
+                      navigate(`/edit/${event._id}`)
+                    }}>
+                      Edit
+                    </Button>:
+                    ''
                   }
                   <Button onClick={() => {
                     navigate(`/details/${event._id}`)}}>

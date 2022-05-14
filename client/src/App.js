@@ -6,8 +6,8 @@ import Register from './components/register';
 import Login from './components/login';
 import AddEvent from './components/addEvent';
 import EventFeed from './components/event.feed';
-import { useState } from 'react';
-import Navy from './components/nav';
+import Edit from './components/edit';
+
 
 
 
@@ -20,6 +20,7 @@ function App() {
           <Route path="/" element={<Login/>}/>
           <Route path='/all' element={<AddEvent/>}/>
           <Route path='/details/:id' element={<EventFeed/>}/>
+          <Route path='edit/:id' element={<Edit/>}/>
         </Routes>
       </BrowserRouter>
     </div>

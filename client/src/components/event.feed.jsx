@@ -7,6 +7,7 @@ import Figure from 'react-bootstrap/Figure'
 import {Link, useNavigate, useParams} from "react-router-dom"
 import DetailedPost from "./detailed.post";
 import Navy from "./nav";
+import SubNav from "./subnav";
 
 
 const EventFeed = () => {
@@ -60,7 +61,7 @@ const EventFeed = () => {
         setEvent(res.data);
       })
       .catch( err => console.log(err))
-}, []);
+}, [dummy]);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -70,6 +71,7 @@ const EventFeed = () => {
   })
     .then((newEvent) => {
       console.log(newEvent)
+      setDummy(!dummy)
     })
     .catch((err)=> {
       console.log(err.message);
@@ -92,6 +94,7 @@ const EventFeed = () => {
   return(
     <div style={{textAlign:"center"}}>
       <Navy/>
+      <SubNav/>
       <h2>{event.title}</h2>
       <div className="EVE addEvent" style={{width: "400px"}}>
         <Form onSubmit={handleSubmit} encType="multipart/form=data">
@@ -109,11 +112,11 @@ const EventFeed = () => {
             </Button>
           </Form>
         </div>
-        <div  style={{display: "flex", justifyContent: "space-evenly", marginTop:'40px', border:"1px solid black" }}>
-          <div style={{ marginLeft:"10px", border:"1px solid black"}}>
+        <div  style={{display: "flex", justifyContent: "space-evenly", marginTop:'40px' }}>
+          <div style={{ marginLeft:"10px"}}>
             <DetailedPost image = {`${photoProp}`} caption={`${captionProp}`} FirstName={`${userProp}`}/>
           </div>
-          <div style={{display: "flex", flexDirection:"row-reverse", justifyContent:"space-evenly",flexWrap: "wrap", border:"1px solid black"}}>
+          <div style={{display: "flex", flexDirection:"row-reverse", justifyContent:"space-evenly",flexWrap: "wrap"}}>
             {allPost.map((post, index)=> {
               return(
                 <div style={{cursor: "pointer"}} onClick={() =>{

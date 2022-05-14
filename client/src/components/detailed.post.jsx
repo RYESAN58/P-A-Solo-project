@@ -27,7 +27,11 @@ const DetailedPost = (props) => {
           {props.caption}
         </Figure.Caption>
         <Figure.Caption style={{backgroundColor: "white", marginTop:"-7px"}}>
-          Posted by: {props.FirstName}
+          {
+            props.FirstName.length > 1 ?
+              `Posted by: ${props.FirstName}`:
+              ''
+          }
         </Figure.Caption>
       </Figure>
     </div>

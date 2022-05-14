@@ -14,7 +14,7 @@ body{
 }
 
 .Navy {
-  background-Color: #e6cbb4;
+  background-Color: white;
   width: 30rem;
   height: 50px;
   box-Shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -55,7 +55,7 @@ body{
 
 .inner:hover{
   opacity: 1.0;
-  background-color: #e6cbb4 ;
+  background-color: rgb(196, 196, 196);
   border-Radius: 25px;
 }
 
@@ -93,7 +93,7 @@ body{
 
 .addEvent {
   width: 60%;
-  height: 30rem;
+  height: 33rem;
   margin: auto;
   margin-top: 10%;
   border-radius: 20px;
