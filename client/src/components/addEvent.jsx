@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button'
 import Figure from 'react-bootstrap/Figure'
 import {Link, useNavigate} from "react-router-dom"
 import Card from 'react-bootstrap/Card'
-import Cookies from "js-cookies"
 import Navy from "./nav";
 import SubNav from "./subnav";
 
@@ -99,51 +98,6 @@ const AddEvent = () => {
         <h2>Welcome {name}</h2>
       </div>
       <div className="EVE">
-        {events.map((event, index) => {
-          return(
-            <Card className="eventCard" key={index}>
-              <Card.Img
-                width={171}
-                height={180}
-                alt={`event number ${index}`}
-                src={`./uploads/${event.image}`}
-                style={{height:"171px", width:"180px"}}
-                />
-                <Card.Body >
-                  <Card.Title>{event.title}</Card.Title>
-                  <Card.Text>
-                    {event.description}
-                  </Card.Text>
-                  {
-                    event.user_id._id === idFromUser ?
-                    <Button variant="danger" style={{margin: "5px"}} onClick={(e) => {
-                      let x = window.confirm('are you sure You Want to adopt?')
-                      if (x){
-                        deleteEvent(event._id)
-                      }
-                    }}>Delete</Button>:
-                    ""
-                  }
-                  {
-                    event.user_id._id === idFromUser ?
-                    <Button variant="default" onClick={()=> {
-                      navigate(`/edit/${event._id}`)
-                    }}>
-                      Edit
-                    </Button>:
-                    ''
-                  }
-                  <Button onClick={() => {
-                    navigate(`/details/${event._id}`)}}>
-                    Event
-                  </Button>
-                </Card.Body>
-                <Figure.Caption style={{textAlign: "center"}}>
-                  <p>Posted by {event.user_id.FirstName}</p>
-                </Figure.Caption>
-            </Card>
-          )
-        })}
       </div>
       <div className="addEvent">
         <h2 className="display-4">Add Event</h2>

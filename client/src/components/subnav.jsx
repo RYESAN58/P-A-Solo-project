@@ -2,7 +2,7 @@ import React from "react";
 import {Link, useNavigate} from "react-router-dom"
 import Button from 'react-bootstrap/Button'
 import axios from "axios";
-import {faImages, faPowerOff} from "@fortawesome/free-solid-svg-icons"
+import {faImages, faPowerOff, faPlus} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 
@@ -25,7 +25,8 @@ const SubNav = (props) => {
     }
   return(
     <div style={{ backgroundColor: '#495054', width:"100%", height: "50px", display: "flex", justifyContent: "space-between", padding: "7px"}}>
-      <Button onClick={()=> navigate("/all")}>EVENTS <FontAwesomeIcon icon={faImages}></FontAwesomeIcon></Button>
+      <Button onClick={()=> navigate("/getall")} variant="dark">EVENTS <FontAwesomeIcon icon={faImages}></FontAwesomeIcon></Button>
+      <Button onClick={()=> navigate("/all")} variant="success">Add Event <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></Button>
       <Button onClick={handleLogout} variant="danger">Logout  <FontAwesomeIcon icon={faPowerOff}></FontAwesomeIcon></Button>
     </div>
   )
