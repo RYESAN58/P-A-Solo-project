@@ -22,6 +22,7 @@ const EventFeed = () => {
   const [dummy, setDummy] = useState('')
   const[name , setName] = useState('')
   const [idFromUser, setId] = useState('')
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -33,6 +34,9 @@ const EventFeed = () => {
         setPost(result)
         setName(localStorage.getItem('name'))
         setId(localStorage.getItem('id'))
+        if (localStorage.getItem('name') === null){
+          navigate('/error')
+        }
 			})
 			.catch((err) => console.log(err.response));
     }, [dummy]);

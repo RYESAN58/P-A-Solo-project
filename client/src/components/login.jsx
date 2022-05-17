@@ -29,7 +29,7 @@ const Login = (props) => {
         console.log(result._id)
         localStorage.setItem(`name`, `${result.FirstName}`)
         localStorage.setItem(`id`, `${result._id}`)
-        navigate('/all')
+        navigate('/getall')
       })
       .catch((err) => {
 				console.log('ERROR!', err.response);

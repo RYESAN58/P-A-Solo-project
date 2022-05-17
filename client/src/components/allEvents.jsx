@@ -24,6 +24,9 @@ const All = () => {
         setEvents(result)
         setName(localStorage.getItem('name'))
         setId(localStorage.getItem('id'))
+        if (localStorage.getItem('name') === null){
+          navigate('/error')
+        }
 			})
 			.catch((err) => console.log(err.response));
     }, [dummy]);
@@ -40,6 +43,7 @@ const All = () => {
     <div>
       <Navy></Navy>
       <SubNav></SubNav>
+      <h2 style={{width:'20%', margin:'auto'}}>Welcome {name}</h2>
       {events.map((event, index)=> {
         return(
         <div style={{ display: "flex", flexDirection:"column", width:'35rem', margin: "auto", marginTop:"35px"}} key={index}>

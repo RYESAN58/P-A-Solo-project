@@ -31,6 +31,11 @@ const AddEvent = () => {
         setEvents(result)
         setName(localStorage.getItem('name'))
         setId(localStorage.getItem('id'))
+        console.log(localStorage.getItem('name'))
+        if (localStorage.getItem('name') === null){
+          navigate('/error')
+        }
+        
 			})
 			.catch((err) => console.log(err.response));
     }, [dummy]);
@@ -43,7 +48,7 @@ const AddEvent = () => {
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
-    if(title.length > 0 && description.length > 0){
+    if(title.length > 0 && description.length > 1){
       setDisplay("")
     }else{
       setDisplay('none')
@@ -51,7 +56,7 @@ const AddEvent = () => {
   }
   const handleDescription = (e) => {
     setDescription(e.target.value)
-    if(title.length > 0 && description.length > 0){
+    if(title.length > 0 && description.length > 1){
       setDisplay("")
     }else{
       setDisplay('none')
@@ -96,7 +101,7 @@ const AddEvent = () => {
       <Navy/>
       <SubNav/>
       <div style={{display: "flex", justifyContent: "space-between", margin: "5px"}}>
-        <h2>Welcome {name}</h2>
+        <h2>Hey {name} add an event to to feed</h2>
       </div>
       <div className="EVE">
       </div>

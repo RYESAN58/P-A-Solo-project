@@ -1,3 +1,4 @@
+import "../App.css"
 import React, { useEffect, useState } from "react"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faHouse, faArrowCircleRight, faClipboard} from "@fortawesome/free-solid-svg-icons"
@@ -66,12 +67,19 @@ const Navy = () =>{
             SEARCH
           </button>
         </div>
-        <div>
-          <ul>
-              {filteredEvents.map((item) => (
-                <li style={{color: 'white'}}>{item.title}</li>
-                ))}
-          </ul>
+        <div style={{backgroundColor:"white"}}>
+            {filteredEvents.map((item, index) =>{ 
+              return(
+                input.length > 1 ?
+                  <div className="pointer search" style={{marginLeft:'4px'}} onClick= {()=> {
+                    navigate(`/details/${item._id}`)
+                  }}>
+                    <p style={{color: 'black'}} key={index}>{item.title}</p>
+                  </div>:
+                  ''
+                )
+            })
+            }
         </div>
       </div>
     </nav>

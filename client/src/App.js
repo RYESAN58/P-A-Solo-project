@@ -1,7 +1,5 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link, useNavigate} from 'react-router-dom'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faHouse, faArrowCircleRight, faClipboard} from "@fortawesome/free-solid-svg-icons"
 import Register from './components/register';
 import Login from './components/login';
 import AddEvent from './components/addEvent';
@@ -9,6 +7,7 @@ import EventFeed from './components/event.feed';
 import Edit from './components/edit';
 import All from './components/allEvents';
 import AddPhoto from './components/addPhoto';
+import ErrorPage from './components/errorPage';
 
 
 
@@ -25,6 +24,7 @@ function App() {
           <Route path='edit/:id' element={<Edit/>}/>
           <Route path='/getall' element = {<All/>}/>
           <Route path='/addpost/:id' element = {<AddPhoto/>}/>
+          <Route path="/error" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>
