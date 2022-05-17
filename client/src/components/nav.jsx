@@ -71,7 +71,7 @@ const Navy = () =>{
             {filteredEvents.map((item, index) =>{ 
               return(
                 input.length > 1 ?
-                  <div className="pointer search" style={{marginLeft:'4px'}} onClick= {()=> {
+                  <div className="pointer search" style={{marginLeft:'4px', border:"solid gray 1px"}} onClick= {()=> {
                     navigate(`/details/${item._id}`)
                   }}>
                     <p style={{color: 'black'}} key={index}>{item.title}</p>

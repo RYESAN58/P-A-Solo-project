@@ -84,7 +84,13 @@ const All = () => {
                   }
                 </div>
                 <div style={{display: "flex", justifyContent:"space-around", borderTop:"gray 2px solid"}}>
-                  <p><FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon> Location</p>
+                  {
+                    event.city ?
+                    <span onClick={()=>{navigate(`/map/${event.streetNumber}/${event.streetName.trim()}/${event.streetType}/${event.city}/${event.state}`)}} className="pointer">
+                      <p><FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon> {event.city}</p>
+                    </span>:
+                    <p><FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon> location </p>
+                  }
                   <p>Created : {event.createdAt.slice(0,-14)}</p>
                 </div>
               </div>

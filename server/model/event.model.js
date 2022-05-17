@@ -19,6 +19,23 @@ const eventSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
+  streetNumber:{
+    type: String,
+  },
+  streetName:{
+    type: String,
+  },
+  streetType:{
+    type: String,
+  },
+  city:{
+    type: String,
+  },
+  state:{
+    type: String,
+  },
+  
+
 },{ timestamps: true });
 
 const Event = mongoose.model("Event", eventSchema)

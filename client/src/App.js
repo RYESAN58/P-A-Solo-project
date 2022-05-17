@@ -8,6 +8,7 @@ import Edit from './components/edit';
 import All from './components/allEvents';
 import AddPhoto from './components/addPhoto';
 import ErrorPage from './components/errorPage';
+import Location from './components/location';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/getall' element = {<All/>}/>
           <Route path='/addpost/:id' element = {<AddPhoto/>}/>
           <Route path="/error" element={<ErrorPage/>}/>
+          <Route path='/map/:streetNumber/:streetName/:streetType/:city/:state' element={<Location/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,7 +7,12 @@ const addNewEvent = async (req, res) => {
   let newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
-    image: req.file.originalname
+    image: req.file.originalname,
+    streetNumber: req.body.streetNumber,
+    streetName: req.body.streetName,
+    streetType: req.body.streetType,
+    city: req.body.city,
+    state: req.body.state,
   });
   console.log(newEvent);
   let decodedJwt;
