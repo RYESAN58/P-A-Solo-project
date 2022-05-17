@@ -94,24 +94,8 @@ const EventFeed = () => {
   return(
     <div style={{textAlign:"center"}}>
       <Navy/>
-      <SubNav/>
+      <SubNav id={`${id}`}/>
       <h2>{event.title}</h2>
-      <div className="EVE addEvent" style={{width: "400px"}}>
-        <Form onSubmit={handleSubmit} encType="multipart/form=data">
-            <Form.Group controlId="formFileSm" className="mb-3">
-              <Form.Label>Upload your photos from {event.title}</Form.Label>
-              <Form.Control type="file" size="sm" filename ="image" required={true} onChange={handleFile}/>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Caption</Form.Label>
-              <Form.Control type="text" placeholder="Photo Caption" onChange={handleCaption} />
-            </Form.Group>
-            <br></br>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </div>
         <div  style={{display: "flex", justifyContent: "space-evenly", marginTop:'40px' }}>
           <div style={{ marginLeft:"10px"}}>
             <DetailedPost image = {`${photoProp}`} caption={`${captionProp}`} FirstName={`${userProp}`}/>

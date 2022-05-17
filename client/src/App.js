@@ -8,6 +8,7 @@ import AddEvent from './components/addEvent';
 import EventFeed from './components/event.feed';
 import Edit from './components/edit';
 import All from './components/allEvents';
+import AddPhoto from './components/addPhoto';
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/details/:id' element={<EventFeed/>}/>
           <Route path='edit/:id' element={<Edit/>}/>
           <Route path='/getall' element = {<All/>}/>
+          <Route path='/addpost/:id' element = {<AddPhoto/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -53,7 +53,11 @@ const deleteEvent = (request, response) => {
 
 const updateEvent = (request, response) => {
   Event.findOneAndUpdate({_id: request.params.id}, request.body, {new: true})
-    .then(updatedPet => response.json(updatedPet))
+    .then(updatedPet => {
+      response.json(updatedPet)
+      console.log(updatedPet)
+      console.log("Gets Here")
+    })
     .catch(err=> response.json(err))
 }
 
@@ -69,5 +73,5 @@ module.exports = {
   getAll,
   deleteEvent,
   updateEvent,
-  findOneEvent
+  findOneEvent,
 }

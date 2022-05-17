@@ -42,7 +42,7 @@ const All = () => {
       <SubNav></SubNav>
       {events.map((event, index)=> {
         return(
-        <div style={{ display: "flex", flexDirection:"column", width:'35rem', margin: "auto", marginTop:"35px"}}>
+        <div style={{ display: "flex", flexDirection:"column", width:'35rem', margin: "auto", marginTop:"35px"}} key={index}>
           <div style={{backgroundColor: "black", width:'100%',height:"10px"}}></div>
           <div style={{display: "flex", flexDirection:'row'}}>
             <div style={{display: 'flex', width:"100%"}}>
@@ -56,7 +56,9 @@ const All = () => {
                   <p>{event.description}</p>
                 </div>
                 <div style={{diplay:"flex", justifyContent: "space-evenly"}}>
-                  <Button>Event Album</Button>
+                  <Button onClick={()=> {
+                    navigate(`/details/${event._id}`)
+                  }}>Event Album</Button>
                   {
                     event.user_id._id === idFromUser ?
                     <Button variant="default" onClick={()=> {
@@ -69,7 +71,7 @@ const All = () => {
                   {
                     event.user_id._id === idFromUser ?
                     <Button variant="danger" style={{margin: "5px"}} onClick={(e) => {
-                      let x = window.confirm('are you sure You Want to adopt?')
+                      let x = window.confirm('are you sure You Want to delete?')
                       if (x){
                         deleteEvent(event._id)
                       }
@@ -77,7 +79,7 @@ const All = () => {
                     ""
                   }
                 </div>
-                <div style={{display: "flex", justifyContent:"space-around"}}>
+                <div style={{display: "flex", justifyContent:"space-around", borderTop:"gray 2px solid"}}>
                   <p><FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon> Location</p>
                   <p>Created : {event.createdAt.slice(0,-14)}</p>
                 </div>
@@ -87,7 +89,7 @@ const All = () => {
         </div>
         )})}
     </div>
-  )  
+  )
 }
 
 

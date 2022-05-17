@@ -10,17 +10,24 @@ import SubNav from "./subnav";
 
 
 const Edit = () => {
-  const [image, setImage] = useState('')
+  const [oldImage, setImage] = useState('')
+  const [image, setPic] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [post, setPost] = useState([])
   const {id} = useParams();
   const navigate = useNavigate()
-
-
+  const formData = new FormData();
+  
+  formData.append('title', title)
+  formData.append("description", description)
+  formData.append('image', image)
+  
+  
   useEffect(()=> {
 		axios.get(`http://localhost:8000/api/one/${id}`)
 			.then(res => {
+        console.log(res.data)
 				setDescription(res.data.description)
         setTitle(res.data.title)
         setImage(res.data.image)
@@ -29,38 +36,37 @@ const Edit = () => {
 			.catch( err => console.log(err))
 	}, []);
 
-  const formData = new FormData();
-
-  formData.append('title', title)
-  formData.append("description", description)
-  formData.append('image', image)
-
+  
   const handleUpdate = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:8000/api/edit/${id}`, FormData)
-				.then(res => {
-					console.log(res);
-					navigate('/all')
-				})
+    console.log(image)
+    axios.put(`http://localhost:8000/api/edit/${id}`, formData)
+    .then(res => {
+      console.log(res);
+      navigate('/getall')
+    })
 		.catch(err => console.log(err))
   }
-
+  
   const handleTitle = (e) => {
     setTitle(e.target.value)
   }
-
+  
   const handleDescription = (e) => {
     setDescription(e.target.value)
   }
   
   const handleFile = (e) => {
-    setImage(e.target.value)
+    console.log(e.target.files[0])
+    setPic(e.target.files[0])
+    console.log(image)
   }
 
+
   useEffect(() => {
-		axios
-			.get(`http://localhost:8000/api/allpost/${id}`)
-			.then((response) => {
+    axios
+    .get(`http://localhost:8000/api/allpost/${id}`)
+    .then((response) => {
         const result = response.data
 				console.log(result)
         setPost(result)
@@ -71,14 +77,6 @@ const Edit = () => {
     },[]);
 
 
-  const deletePost = (id) => {
-    axios.delete(`http://localhost:8000/api/delete/post/${id}`)
-    .then(res => {
-      console.log(res)
-  })
-    .catch(err => console.log(err))
-}
-
   return(
     <div>
       <Navy/>
@@ -86,18 +84,21 @@ const Edit = () => {
       <div>
         <div className="addEvent">
         <h2 className="display-4">Edit Event</h2>
-        <Form onSubmit={handleUpdate} encType="multipart/form=data">
+        <Form onSubmit={handleUpdate} encType="multipart/form-data">
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Title of event:</Form.Label>
-            <Form.Control type="text" placeholder={`${title}`} onChange={handleTitle}/>
+            <Form.Control type="text" value={`${title}`} onChange={handleTitle}/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Description:</Form.Label>
-            <Form.Control as="textarea" rows={2} placeholder={`${description}`} onChange={handleDescription}/>
+            <Form.Control as="textarea" rows={2} value={`${description}`} onChange={handleDescription}/>
           </Form.Group>
           <Form.Group controlId="formFileSm" className="mb-3">
             <Form.Label>Upload Landing Photo</Form.Label>
-            <Form.Control type="file" size="sm" filename ="image" onChange={handleFile} required={true}/>
+            <Form.Control type="file" size="sm" filename ="image" onChange={(e) => {
+              setPic(e.target.files[0])
+              console.log(image)
+            }} required={true}/>
           </Form.Group>
           <br></br>
           <Button variant="primary" type="submit">

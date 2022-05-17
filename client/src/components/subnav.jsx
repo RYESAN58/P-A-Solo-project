@@ -6,6 +6,7 @@ import {faImages, faPowerOff, faPlus} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 
+
 const SubNav = (props) => {
   const navigate = useNavigate()
   const handleLogout = () => {
@@ -25,8 +26,15 @@ const SubNav = (props) => {
     }
   return(
     <div style={{ backgroundColor: '#495054', width:"100%", height: "50px", display: "flex", justifyContent: "space-between", padding: "7px"}}>
-      <Button onClick={()=> navigate("/getall")} variant="dark">EVENTS <FontAwesomeIcon icon={faImages}></FontAwesomeIcon></Button>
-      <Button onClick={()=> navigate("/all")} variant="success">Add Event <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></Button>
+      <div style={{display:"flex", width:"50%", justifyContent:'left'}}>
+        <Button onClick={()=> navigate("/getall")} variant="dark" style={{marginRight:'10px'}}>EVENTS <FontAwesomeIcon icon={faImages}></FontAwesomeIcon></Button>
+        <Button onClick={()=> navigate("/all")} variant="success" style={{marginRight:'10px'}}>Add Event <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></Button>
+        {
+          props.id ?
+          <Button onClick={()=> navigate(`/addpost/${props.id}`)} style={{marginRight:'10px'}} variant="success">Add Photo <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></Button>:
+          ''
+        }
+      </div>
       <Button onClick={handleLogout} variant="danger">Logout  <FontAwesomeIcon icon={faPowerOff}></FontAwesomeIcon></Button>
     </div>
   )

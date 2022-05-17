@@ -35,52 +35,53 @@ const AddEvent = () => {
 			.catch((err) => console.log(err.response));
     }, [dummy]);
 
-    const formData = new FormData();
+  const formData = new FormData();
 
-    formData.append('title', title)
-    formData.append("description", description)
-    formData.append('image', image)
+  formData.append('title', title)
+  formData.append("description", description)
+  formData.append('image', image)
 
-    const handleTitle = (e) => {
-      setTitle(e.target.value)
-      if(title.length > 0 && description.length > 0){
-        setDisplay("")
-      }else{
-        setDisplay('none')
-      }
+  const handleTitle = (e) => {
+    setTitle(e.target.value)
+    if(title.length > 0 && description.length > 0){
+      setDisplay("")
+    }else{
+      setDisplay('none')
     }
-    const handleDescription = (e) => {
-      setDescription(e.target.value)
-      if(title.length > 0 && description.length > 0){
-        setDisplay("")
-      }else{
-        setDisplay('none')
-      }
+  }
+  const handleDescription = (e) => {
+    setDescription(e.target.value)
+    if(title.length > 0 && description.length > 0){
+      setDisplay("")
+    }else{
+      setDisplay('none')
     }
+  }
 
-    const handleFile = (e)=> {
-      setPic(e.target.files[0])
+  const handleFile = (e)=> {
+    setPic(e.target.files[0])
+    console.log(image)
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios
+    .post("http://localhost:8000/api/post", formData, {
+    withCredentials: true,
+  })
+  .then((newEvent) => {
+    setErrors({})
+    setAuthError("")
+    console.log(newEvent)
+  })
+  .catch((err)=> {
+    console.log(err.message);
+    if(err.message) {
+      setErrors('Must fill out entire form')
+    }else {
+      console.log(err)
     }
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      axios
-      .post("http://localhost:8000/api/post", formData, {
-      withCredentials: true,
-    })
-    .then((newEvent) => {
-      setErrors({})
-      setAuthError("")
-      console.log(newEvent)
-    })
-    .catch((err)=> {
-      console.log(err.message);
-      if(err.message) {
-        setErrors('Must fill out entire form')
-      }else {
-        console.log(err)
-      }
-    })
-    }
+  })
+  }
     const deleteEvent = (id) => {
       axios.delete(`http://localhost:8000/api/delete/${id}`)
       .then(res => {
