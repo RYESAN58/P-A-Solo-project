@@ -3,10 +3,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import {Link, useNavigate, useParams} from "react-router-dom"
+import {Link, Navigate, useNavigate, useParams } from "react-router-dom"
 import Navy from "./nav";
 import SubNav from "./subnav";
-
 
 
 const AddPhoto = () => {
@@ -14,6 +13,7 @@ const AddPhoto = () => {
   const [image, setPic] = useState('')
   const [caption, setCaption] = useState('')
   const [dummy, setDummy] = useState(false)
+  const navigate = useNavigate()
   const formData = new FormData();
 
   formData.append('caption', caption)
@@ -38,7 +38,7 @@ const AddPhoto = () => {
   })
     .then((newEvent) => {
       console.log(newEvent)
-      setDummy(!dummy)
+      navigate(`/details/${id}`)
     })
     .catch((err)=> {
       console.log(err.message);
@@ -47,6 +47,7 @@ const AddPhoto = () => {
         console.log(err)
       }
     })
+
   }
   return(
     <div>

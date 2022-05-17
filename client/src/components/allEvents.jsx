@@ -56,7 +56,7 @@ const All = () => {
                   <h3>{event.title}</h3>
                   <h3><span style={{fontSize:"10px"}}>Posted By </span>{event.user_id.FirstName}</h3>
                 </div>
-                <div>
+                <div style={{marginTop: "13px"}}>
                   <p>{event.description}</p>
                 </div>
                 <div style={{diplay:"flex", justifyContent: "space-evenly"}}>
