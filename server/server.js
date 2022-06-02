@@ -29,8 +29,8 @@ postRoutes(app)
 // const decodedToken = jwt.verify(token, process.env.SECRET_KEY)
 // console.log(decodedToken)
 
-const port = 8000
+const port = process.env.PORT
 
-app.listen(port, () => {
-  console.log(`Listening on port: ${port}`)
+app.listen(port || 8000, () => {
+  console.log(`Listening on port:`)
 })
