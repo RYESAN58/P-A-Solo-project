@@ -22,15 +22,8 @@ userRoutes(app)
 eventRoutes(app)
 postRoutes(app)
 
-// const jwt = require('jsonwebtoken')
-// var token = jwt.sign({id: "dadsddsfd" }, process.env.SECRET_KEY)
-// console.log("token:", token)
-
-// const decodedToken = jwt.verify(token, process.env.SECRET_KEY)
-// console.log(decodedToken)
-
 const port = process.env.PORT || 8000
 
-app.listen(port, () => {
+app.listen(port || 19434, () => {
   console.log(`Listening on port:`)
 })
