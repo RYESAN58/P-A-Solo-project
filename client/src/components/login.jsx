@@ -20,7 +20,7 @@ const Login = (props) => {
     setSuccessMsg('')
     const postData = {email, password};
     axios
-      .post("http://localhost:8000/api/login", postData, {
+      .post("https://photocred.herokuapp.com/api/login", postData, {
         withCredentials: true,
       })
       .then((response) => {

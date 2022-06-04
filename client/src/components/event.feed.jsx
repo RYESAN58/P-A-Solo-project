@@ -59,7 +59,7 @@ const EventFeed = () => {
 
 
   useEffect(()=> {
-    axios.get(`http://localhost:8000/api/one/${id}`)
+    axios.get(`https://photocred.herokuapp.com/api/one/${id}`)
       .then(res => {
         console.log(res.data);
         setEvent(res.data);
@@ -70,7 +70,7 @@ const EventFeed = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-    .post(`http://localhost:8000/api/poster/${id}`, formData, {
+    .post(`https://photocred.herokuapp.com/api/poster/${id}`, formData, {
     withCredentials: true,
   })
     .then((newEvent) => {
@@ -87,7 +87,7 @@ const EventFeed = () => {
   }
 
   const deletePost = (id) => {
-    axios.delete(`http://localhost:8000/api/delete/post/${id}`)
+    axios.delete(`https://photocred.herokuapp.com/api/delete/post/${id}`)
     .then(res => {
       console.log(res)
       setDummy(!dummy)

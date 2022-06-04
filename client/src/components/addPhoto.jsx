@@ -33,7 +33,7 @@ const AddPhoto = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-    .post(`http://localhost:8000/api/poster/${id}`, formData, {
+    .post(`https://photocred.herokuapp.com/api/poster/${id}`, formData, {
     withCredentials: true,
   })
     .then((newEvent) => {

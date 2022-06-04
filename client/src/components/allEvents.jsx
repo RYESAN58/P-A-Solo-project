@@ -17,7 +17,7 @@ const All = () => {
 
   useEffect(() => {
 		axios
-			.get('http://localhost:8000/api/getAll')
+			.get('https://photocred.herokuapp.com/api/getAll')
 			.then((response) => {
         const result = response.data
 				console.log(response.data)
@@ -32,7 +32,7 @@ const All = () => {
     }, [dummy]);
 
   const deleteEvent = (id) => {
-    axios.delete(`http://localhost:8000/api/delete/${id}`)
+    axios.delete(`https://photocred.herokuapp.com/api/delete/${id}`)
     .then(res => {
       console.log(res)
       setDummy(!dummy)

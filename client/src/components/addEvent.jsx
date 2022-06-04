@@ -84,7 +84,7 @@ const AddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-    .post("http://localhost:8000/api/post", formData, {
+    .post("https://photocred.herokuapp.com/api/post", formData, {
     withCredentials: true,
   })
   .then((newEvent) => {
@@ -103,7 +103,7 @@ const AddEvent = () => {
   })
   }
     const deleteEvent = (id) => {
-      axios.delete(`http://localhost:8000/api/delete/${id}`)
+      axios.delete(`https://photocred.herokuapp.com/api/delete/${id}`)
       .then(res => {
         console.log(res)
         setDummy(!dummy)
