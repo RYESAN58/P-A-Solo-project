@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/PhotoCred', {
+mongoose.connect('mongodb+srv://ryesan58:Manhattan212!@cluster0.ttjc3.mongodb.net/?retryWrites=true&w=majority', {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true,
 })
