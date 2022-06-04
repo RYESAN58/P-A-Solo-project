@@ -1,6 +1,7 @@
 const Event = require('../model/event.model')
 const User = require('../model/user.model')
 const jwt = require('jsonwebtoken')
+const {uploadFile} = require("../s3")
 
 
 const addNewEvent = async (req, res) => {
@@ -15,6 +16,9 @@ const addNewEvent = async (req, res) => {
     state: req.body.state,
   });
   console.log(newEvent);
+  const file = req.file
+  const result = await uploadFile(file)
+  console.log(result)
   let decodedJwt;
   try {
     decodedJwt = await jwt.verify(

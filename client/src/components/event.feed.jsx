@@ -27,7 +27,7 @@ const EventFeed = () => {
 
   useEffect(() => {
 		axios
-			.get(`http://localhost:8000/api/allpost/${id}`)
+			.get(`https://photocred.herokuapp.com/api/allpost/${id}`)
 			.then((response) => {
         const result = response.data
 				console.log(result)

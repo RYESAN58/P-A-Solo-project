@@ -33,7 +33,7 @@ const AddEvent = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8000/api/getAll')
+			.get('https://photocred.herokuapp.com/api/getAll')
 			.then((response) => {
         const result = response.data
 				console.log(response.data)
