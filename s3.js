@@ -1,5 +1,5 @@
 require("dotenv").config();
-const S3 = require('aws-sdk')
+const S3 = require('aws-sdk/clients/s3')
 const fs = require('fs')
 
 
