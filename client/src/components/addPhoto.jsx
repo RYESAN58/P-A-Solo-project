@@ -24,6 +24,7 @@ const AddPhoto = () => {
 
   const handleFile = (e)=> {
     setPic(e.target.files[0])
+    setId(localStorage.getItem('id'))
     console.log(image)
   }
 
