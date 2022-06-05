@@ -19,7 +19,7 @@ const DetailedPost = (props) => {
                 border: "10px solid hsla(0,0%,100%,.5)"
               }}
               alt="171x180"
-              src={require(`../../public/uploads/${props.image}`)}
+              src={`https://photocred.s3.amazonaws.com/${props.image}`}
             />:
           ""
         }

@@ -11,7 +11,7 @@ const SubNav = (props) => {
   const navigate = useNavigate()
   const handleLogout = () => {
     axios
-      .post("https://photocred.herokuapp.com/api/logout",{
+      .post("http://localhost:8000/api/logout" || "https://photocred.herokuapp.com/api/logout",{
       credentials: 'include'
     })
       .then((response) => {

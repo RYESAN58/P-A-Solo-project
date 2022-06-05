@@ -33,7 +33,7 @@ const AddEvent = () => {
 
 	useEffect(() => {
 		axios
-			.get('https://photocred.herokuapp.com/api/getAll')
+			.get( "http://localhost:8000/api/getAll" || 'https://photocred.herokuapp.com/api/getAll')
 			.then((response) => {
         const result = response.data
 				console.log(response.data)
@@ -84,7 +84,7 @@ const AddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-    .post("https://photocred.herokuapp.com/api/post", formData, {
+    .post("http://localhost:8000/api/post" || 'https://photocred.herokuapp.com/api/post', formData, {
     withCredentials: true,
   })
   .then((newEvent) => {
@@ -103,7 +103,7 @@ const AddEvent = () => {
   })
   }
     const deleteEvent = (id) => {
-      axios.delete(`https://photocred.herokuapp.com/api/delete/${id}`)
+      axios.delete( `http://localhost:8000/api/delete/${id}` || `https://photocred.herokuapp.com/api/delete/${id}`)
       .then(res => {
         console.log(res)
         setDummy(!dummy)

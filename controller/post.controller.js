@@ -1,5 +1,6 @@
 const Post = require('../model/post.model')
 const jwt = require('jsonwebtoken')
+const {uploadFile} = require("../s3")
 
 const addNewPost= async (req, res) => {
   const {body, params, file} = req
@@ -8,6 +9,8 @@ const addNewPost= async (req, res) => {
     caption: body.caption
   });
   console.log(params)
+  const s3image = req.file
+  const result = await uploadFile(s3image)
   newPost.event_id = params.eventId
   let decodedJwt;
   try {

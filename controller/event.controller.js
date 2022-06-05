@@ -5,6 +5,7 @@ const {uploadFile} = require("../s3")
 
 
 const addNewEvent = async (req, res) => {
+  console.log("THIS IS THE BODY" , req.body)
   let newEvent = new Event({
     title: req.body.title,
     description: req.body.description,
@@ -18,7 +19,9 @@ const addNewEvent = async (req, res) => {
   console.log(newEvent);
   const file = req.file
   const result = await uploadFile(file)
-  console.log(result)
+  console.log("THIS IS THE RESULT!!!",result)
+  console.log('THIS IS THE KEY', result.Key)
+  console.log(req.file.originalname)
   let decodedJwt;
   try {
     decodedJwt = await jwt.verify(

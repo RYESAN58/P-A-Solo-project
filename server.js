@@ -27,5 +27,5 @@ postRoutes(app)
 const port = process.env.PORT || 8000
 
 app.listen(port || 19434, () => {
-  console.log(`Listening on port:`)
+  console.log(`Listening on port: ${port}`)
 })

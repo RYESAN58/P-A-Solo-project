@@ -17,7 +17,7 @@ const All = () => {
 
   useEffect(() => {
 		axios
-			.get('https://photocred.herokuapp.com/api/getAll')
+			.get("http://localhost:8000/api/getAll" ||'https://photocred.herokuapp.com/api/getAll')
 			.then((response) => {
         const result = response.data
 				console.log(response.data)
@@ -32,7 +32,7 @@ const All = () => {
     }, [dummy]);
 
   const deleteEvent = (id) => {
-    axios.delete(`https://photocred.herokuapp.com/api/delete/${id}`)
+    axios.delete(`http://localhost:8000/api/delete/${id}` ||`https://photocred.herokuapp.com/api/delete/${id}`)
     .then(res => {
       console.log(res)
       setDummy(!dummy)
@@ -50,7 +50,7 @@ const All = () => {
           <div style={{backgroundColor: "black", width:'100%',height:"10px"}}></div>
           <div style={{display: "flex", flexDirection:'row'}}>
             <div style={{display: 'flex', width:"100%"}}>
-              <img src={require(`../../public/uploads/${event.image}`)} alt="" style={{height:"75px", width:"75px", objectFit:"cover", margin:'auto'}}/>
+              <img src={`https://photocred.s3.amazonaws.com/${event.image}`} alt="" style={{height:"75px", width:"75px", objectFit:"cover", margin:'auto'}}/>
               <div style={{ width:'100%', padding:"0px 8px"}}>
                 <div style={{display: 'flex', justifyContent:'space-between', width:"100%", height:"50px"}}>
                   <h3>{event.title}</h3>
