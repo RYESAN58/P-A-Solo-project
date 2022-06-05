@@ -26,7 +26,7 @@ const AddEvent = () => {
   const [streetName, setStreetName] = useState('')
   const [streetType, setStreetType] = useState('')
   const [city, setCity] = useState('')
-  // LOl this is ironic That's how they teach you usestate
+  // LOL this is ironic That's how they teach you usestate
   const [state, setState] = useState('')
 
 
@@ -84,9 +84,7 @@ const AddEvent = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-    .post('https://photocred.herokuapp.com/api/post', formData, {
-    withCredentials: true,
-  })
+    .post('https://photocred.herokuapp.com/api/post', formData)
   .then((newEvent) => {
     setErrors({})
     setAuthError("")
@@ -95,6 +93,7 @@ const AddEvent = () => {
     navigate('/getall')
   })
   .catch((err)=> {
+    console.log(err)
     console.log(err.message);
     if(err.message) {
       setErrors('Must fill out entire form')
