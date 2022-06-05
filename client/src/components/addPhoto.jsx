@@ -15,11 +15,12 @@ const AddPhoto = () => {
   const [dummy, setDummy] = useState(false)
   const navigate = useNavigate()
   const formData = new FormData();
+  const [idFromUser, setId] = useState('')
 
   formData.append('caption', caption)
   formData.append("image", image)
-
-
+  formData.append('user_id', idFromUser)
+  console.log(localStorage.getItem('id'))
 
   const handleFile = (e)=> {
     setPic(e.target.files[0])
@@ -32,6 +33,7 @@ const AddPhoto = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setId(localStorage.getItem('id'))
     axios
     .post(`https://photocred.herokuapp.com/api/poster/${id}` , formData, {
     withCredentials: true,
@@ -56,7 +58,7 @@ const AddPhoto = () => {
       <div className="EVE addEvent" style={{width: "400px"}}>
         <Form onSubmit={handleSubmit} encType="multipart/form=data">
             <Form.Group controlId="formFileSm" className="mb-3">
-              <Form.Label>Upload your photos</Form.Label>
+              <Form.Label>Upload your photo</Form.Label>
               <Form.Control type="file" size="sm" filename ="image" required={true} onChange={handleFile}/>
             </Form.Group>
             <Form.Group className="mb-3">
