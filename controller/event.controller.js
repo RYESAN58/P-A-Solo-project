@@ -19,8 +19,7 @@ const addNewEvent = async (req, res) => {
   console.log(newEvent);
   const file = req.file
   const result = await uploadFile(file)
-  console.log("THIS IS THE RESULT!!!",result)
-  console.log('THIS IS THE KEY', result.Key)
+  console.log("GETS TO CONTROLLER")
   console.log(req.file.originalname)
   let decodedJwt;
   try {

@@ -65,7 +65,7 @@ const Edit = () => {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:8000/api/allpost/${id}` || `https://photocred.herokuapp.com/api/allpost/${id}`)
+    .get(`https://photocred.herokuapp.com/api/allpost/${id}` || `http://localhost:8000/api/allpost/${id}`)
     .then((response) => {
         const result = response.data
 				console.log(result)
@@ -141,7 +141,7 @@ const Edit = () => {
               </td>
               <td>
                 <Button variant="danger" onClick={() => {
-                      axios.delete(`http://localhost:8000/api/delete/post/${post._id}` || `https://photocred.herokuapp.com/api/delete/post/${post._id}`)
+                      axios.delete(`https://photocred.herokuapp.com/api/delete/post/${post._id}`)
                       .then(res => {
                         console.log(res)
                     })
