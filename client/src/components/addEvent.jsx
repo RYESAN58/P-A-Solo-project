@@ -59,6 +59,7 @@ const AddEvent = () => {
   formData.append('streetType', streetType)
   formData.append('city', city)
   formData.append('state', state)
+  formData.append("user_id", idFromUser)
 
 
   const handleTitle = (e) => {

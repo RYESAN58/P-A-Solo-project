@@ -15,6 +15,7 @@ const addNewEvent = async (req, res) => {
     streetType: req.body.streetType,
     city: req.body.city,
     state: req.body.state,
+    user_id: req.body.user_id
   });
   console.log(newEvent);
   const file = req.file
