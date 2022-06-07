@@ -114,6 +114,11 @@ const EventFeed = () => {
                 }
                 } key={index}>
                   <Figure>
+                    {
+                      post.image.includes("+") ?
+                      post.image = post.image.replace("+", "%2B"):
+                      ""
+                    }
                     <Figure.Image
                       alt="171x180"
                       style={{

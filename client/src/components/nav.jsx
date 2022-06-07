@@ -41,7 +41,7 @@ const Navy = () =>{
 
   return(
     <nav className='Nav navbar'>
-      <div>
+      <div id="photocred">
         <span className='Color'>
           PhotoCred
         </span>
@@ -60,7 +60,7 @@ const Navy = () =>{
           <span className="headcon">Login</span>
         </div>
       </div>
-        <div className="wrap" style={{display: 'flex', flexDirection:"column"}}>
+        <div className="wrap" id = "searchBar">
         <div className="search">
           <input type="text" className="searchTerm form-control me-2" placeholder="What are you looking for?"  onChange={inputHandler} />
           <button type="submit" className="btn btn-outline-primary" onChange={inputHandler} disabled>

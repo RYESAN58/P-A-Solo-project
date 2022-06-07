@@ -108,6 +108,10 @@ body{
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+.wrap{
+  display: 'flex'; 
+  flex-direction: "column";
+}
 
 
 .eventCard {
@@ -136,4 +140,26 @@ body{
 /* .search:hover {
   background-color: rgb(213, 213, 213);
 } */
+
+@media all and (max-width: 600px){
+  .register {
+    width: 60%;
+  };
+}
+@media all and (max-width: 600px) {
+  .wrap {
+    display: none;
+  }
+}
+@media all and (max-width: 600px) {
+  .Nav {
+    height: 200px;
+  }
+}
+@media all and (max-width: 600px) {
+  #photocred {
+    width: 100%;
+    text-align: center;
+  }
+}
 
