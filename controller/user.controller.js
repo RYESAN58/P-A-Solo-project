@@ -69,7 +69,7 @@ const login = async (req, res) => {
     .json({ msg: "successful login" });
 
 }
-const logout = async (req, res) => {
+const logout = (req, res) => {
   console.log('gets here')
   res.clearCookie('userToken', ['/']);
   res.json({msg: "logout Successful"})
