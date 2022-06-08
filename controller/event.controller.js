@@ -22,18 +22,18 @@ const addNewEvent = async (req, res) => {
   const result = await uploadFile(file)
   console.log(req.file.originalname)
   let decodedJwt;
-  try {
-    decodedJwt = await jwt.verify(
-      req.cookies.userToken, 
-      process.env.SECRET_KEY,
-      );
-      console.log("SUCCESS", decodedJwt)
-  } catch (error) {
-    console.log("TOKEN ERROR");
-    res.status(400).json({errorMessage: "PLease Login"});
-    return;
-  }
-  newEvent.user_id = decodedJwt.id
+  // try {
+  //   decodedJwt = await jwt.verify(
+  //     req.cookies.userToken, 
+  //     process.env.SECRET_KEY,
+  //     );
+  //     console.log("SUCCESS", decodedJwt)
+  // } catch (error) {
+  //   console.log("TOKEN ERROR");
+  //   res.status(400).json({errorMessage: "PLease Login"});
+  //   return;
+  // }
+  // newEvent.user_id = decodedJwt.id
   console.log("new post added id", newEvent)
   try {
     newEvent = await newEvent.save();
