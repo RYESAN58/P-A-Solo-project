@@ -59,11 +59,15 @@ const login = async (req, res) => {
   console.log("secret Key",process.env.SECRET_KEY)
   console.log(useQuery._id)
   console.log("======")
+  
   const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY, { expiresIn: "1h" })
   console.log("this is usertoken!" ,userToken)
-  res.cookie("userToken", userToken).json({
-    message: "successful"
-  })
+  res.cookie("usertoken", userToken, process.env.SECRET_KEY, {
+    httpOnly: true,
+    expires: new Date(Date.now() + 90000000),
+    })
+    .json({ msg: "successful login" });
+
 }
 const logout = async (req, res) => {
   console.log('gets here')
