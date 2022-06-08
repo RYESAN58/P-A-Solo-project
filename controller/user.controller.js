@@ -72,7 +72,7 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   console.log('gets here')
   res.clearCookie('userToken', ['/']);
-  res.json({msg: "logout Successful"}).end()
+  res.json({msg: "logout Successful"})
 };
 module.exports ={
   register,
