@@ -66,7 +66,7 @@ const login = async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 90000000),
     })
-    .json({ msg: "successful login" });
+    .json(useQuery);
 
 }
 const logout = (req, res) => {
