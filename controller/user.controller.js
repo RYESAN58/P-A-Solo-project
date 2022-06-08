@@ -60,8 +60,10 @@ const login = async (req, res) => {
   console.log(useQuery._id)
   console.log("======")
   const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY, { expiresIn: "1h" })
-  console.log("this is usetoken!" ,userToken)
-  // .json(useQuery)
+  console.log("this is usertoken!" ,userToken)
+  res.cookie("userToken", userToken).json({
+    message: "successful"
+  })
 }
 const logout = async (req, res) => {
   console.log('gets here')
