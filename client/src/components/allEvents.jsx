@@ -46,7 +46,7 @@ const All = () => {
       <h2 style={{width:'20%', margin:'auto'}}>Welcome {name}</h2>
       {events.map((event, index)=> {
         return(
-        <div style={{ display: "flex", flexDirection:"column", width:'35rem', margin: "auto", marginTop:"35px"}} key={index}>
+        <div style={{ display: "flex", flexDirection:"column", width:'100%', margin: "auto", marginTop:"35px"}} key={index}>
           <div style={{backgroundColor: "black", width:'100%',height:"10px"}}></div>
           <div style={{display: "flex", flexDirection:'row'}}>
             <div style={{display: 'flex', width:"100%"}}>

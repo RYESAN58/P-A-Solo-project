@@ -55,14 +55,13 @@ const login = async (req, res) => {
     res.status(400).json({error:"Email and/or password do not match"});
     return;
   }
-  const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY)
-  console.log("token : jhlihl " , userToken)
-  res
-    .cookie("userToken", userToken, process.env.SECRET_KEY, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 900000000)
-  })
-  .json(useQuery)
+  console.log("======")
+  console.log("secret Key",process.env.SECRET_KEY)
+  console.log(useQuery._id)
+  console.log("======")
+  const userToken = jwt.sign({id: useQuery._id}, process.env.SECRET_KEY, { expiresIn: "1h" })
+  console.log("this is usetoken!" ,userToken)
+  // .json(useQuery)
 }
 const logout = async (req, res) => {
   console.log('gets here')
